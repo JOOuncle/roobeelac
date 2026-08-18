@@ -1,4 +1,5 @@
 const banners = [...document.querySelectorAll('.floating-banner')];
+
 const openAfter = 220;
 const previewMode = new URLSearchParams(window.location.search).has('preview');
 
@@ -11,4 +12,7 @@ function syncFloatingBanners() {
 }
 
 syncFloatingBanners();
-window.addEventListener('scroll', syncFloatingBanners, { passive: true });
+
+window.addEventListener('scroll', syncFloatingBanners, {
+  passive: true
+});
