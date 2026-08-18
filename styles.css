@@ -3,12 +3,17 @@
   --text: #12243a;
   --muted: #66758a;
   --brand-blue: #4b84c2;
-  --legacy-tag: #8f5b29;
-  --renewal-tag: #276cae;
+
+  /* 플로팅 배너 */
   --banner-size: 68px;
-  --banner-width: 348px;
+  --banner-width: 400px;
   --banner-gap: 12px;
 }
+
+
+/* =========================
+   RESET
+========================= */
 
 * {
   box-sizing: border-box;
@@ -21,254 +26,502 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+
   background: var(--page-bg);
   color: var(--text);
-  font-family: Pretendard, "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  font-family:
+    Pretendard,
+    "Noto Sans KR",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
 a {
   color: inherit;
 }
 
+
+/* =========================
+   DEMO PAGE
+========================= */
+
 .hero {
   min-height: 100vh;
+
   display: grid;
   place-content: center;
   justify-items: start;
+
   gap: 18px;
-  padding: 56px max(24px, calc((100vw - 1120px) / 2));
+
+  padding:
+    56px
+    max(24px, calc((100vw - 1120px) / 2));
+
   background:
-    radial-gradient(circle at 78% 22%, rgba(75, 132, 194, .2), transparent 30%),
-    linear-gradient(180deg, #ffffff 0%, #eef4fb 100%);
+    radial-gradient(
+      circle at 78% 22%,
+      rgba(75, 132, 194, 0.2),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #eef4fb 100%
+    );
 }
+
 
 .eyebrow {
   margin: 0;
+
   color: var(--brand-blue);
+
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: .14em;
+  letter-spacing: 0.14em;
 }
+
 
 .hero h1 {
   margin: 0;
+
   max-width: 820px;
+
   font-size: clamp(42px, 7vw, 88px);
   line-height: 1.03;
-  letter-spacing: -.05em;
+  letter-spacing: -0.05em;
 }
+
 
 .hero-copy {
   margin: 0;
+
   color: var(--muted);
+
   font-size: clamp(16px, 2vw, 20px);
 }
 
+
 .scroll-hint {
   margin-top: 32px;
+
   color: var(--muted);
+
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: 0.12em;
 }
+
+
+/* =========================
+   CONTENT
+========================= */
 
 .content-section {
   width: min(1120px, calc(100% - 48px));
+
   margin: 0 auto;
+
   padding: 120px 0 60px;
+
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 24px;
 }
 
+
 .content-card {
   min-height: 320px;
+
   padding: 36px;
-  border: 1px solid rgba(18, 36, 58, .08);
+
+  border: 1px solid rgba(18, 36, 58, 0.08);
   border-radius: 28px;
-  background: #fff;
-  box-shadow: 0 18px 50px rgba(30, 57, 88, .06);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 18px 50px
+    rgba(30, 57, 88, 0.06);
 }
+
 
 .content-card > span {
   color: var(--brand-blue);
+
   font-size: 13px;
   font-weight: 800;
 }
 
+
 .content-card h2 {
   margin: 70px 0 12px;
+
   font-size: 32px;
-  letter-spacing: -.03em;
+  letter-spacing: -0.03em;
 }
+
 
 .content-card p {
   margin: 0;
+
   color: var(--muted);
+
   line-height: 1.7;
 }
+
 
 .spacer {
   height: 80vh;
 }
 
-/* Floating banner */
+
+/* =========================
+   FLOATING BANNER GROUP
+========================= */
+
 .floating-banner-group {
   position: fixed;
+
   right: 24px;
   bottom: 24px;
+
   z-index: 1000;
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
   gap: var(--banner-gap);
+
   pointer-events: none;
 }
 
+
+/* =========================
+   FLOATING BANNER
+========================= */
+
 .floating-banner {
   --delay: 0ms;
+
   width: var(--banner-size);
   height: var(--banner-size);
+
   display: flex;
   align-items: center;
+
   overflow: hidden;
-  border: 1px solid rgba(18, 36, 58, .1);
+
+  border:
+    1px solid
+    rgba(18, 36, 58, 0.1);
+
   border-radius: 999px;
-  background: rgba(255, 255, 255, .96);
-  box-shadow: 0 14px 36px rgba(25, 52, 84, .18);
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 14px 36px
+    rgba(25, 52, 84, 0.18);
+
   text-decoration: none;
+
   white-space: nowrap;
+
   pointer-events: auto;
+
   transition:
-    width 520ms cubic-bezier(.2, .8, .2, 1) var(--delay),
-    transform 220ms ease,
-    box-shadow 220ms ease;
+    width
+      520ms
+      cubic-bezier(0.2, 0.8, 0.2, 1)
+      var(--delay),
+
+    transform
+      220ms
+      ease,
+
+    box-shadow
+      220ms
+      ease;
+
   will-change: width;
 }
+
+
+/* 두 번째 배너 약간 늦게 열림 */
 
 .floating-banner:nth-child(2) {
   --delay: 90ms;
 }
 
-.floating-banner:hover,
-.floating-banner:focus-visible {
-  width: var(--banner-width);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 44px rgba(25, 52, 84, .24);
-  outline: none;
-}
+
+/* 펼쳐졌을 때 */
 
 .floating-banner.is-expanded {
   width: var(--banner-width);
 }
 
+
+/* 마우스 올렸을 때도 펼침 */
+
+.floating-banner:hover,
+.floating-banner:focus-visible {
+  width: var(--banner-width);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 18px 44px
+    rgba(25, 52, 84, 0.24);
+
+  outline: none;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
 .floating-banner__thumb {
   flex: 0 0 var(--banner-size);
+
   width: var(--banner-size);
   height: var(--banner-size);
+
   display: grid;
   place-items: center;
+
   padding: 3px;
 }
+
 
 .floating-banner__thumb img {
   width: 100%;
   height: 100%;
+
   display: block;
+
   border-radius: 50%;
+
   object-fit: cover;
 }
 
+
+/* =========================
+   TEXT AREA
+========================= */
+
 .floating-banner__copy {
+  flex: 1;
   min-width: 0;
+
   display: grid;
-  grid-template-columns: auto 1fr auto;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
   align-items: center;
-  gap: 10px;
-  padding: 0 18px 0 4px;
+
+  gap: 14px;
+
+  padding:
+    0
+    20px
+    0
+    10px;
+
   opacity: 0;
+
   transform: translateX(14px);
+
   transition:
-    opacity 220ms ease calc(var(--delay) + 180ms),
-    transform 360ms ease calc(var(--delay) + 120ms);
+    opacity
+      220ms
+      ease
+      calc(var(--delay) + 180ms),
+
+    transform
+      360ms
+      ease
+      calc(var(--delay) + 120ms);
 }
 
-.floating-banner.is-expanded .floating-banner__copy,
-.floating-banner:hover .floating-banner__copy,
-.floating-banner:focus-visible .floating-banner__copy {
+
+/* 펼칠 때 글자 표시 */
+
+.floating-banner.is-expanded
+.floating-banner__copy,
+
+.floating-banner:hover
+.floating-banner__copy,
+
+.floating-banner:focus-visible
+.floating-banner__copy {
   opacity: 1;
+
   transform: translateX(0);
 }
 
-.floating-banner__tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 26px;
-  padding: 0 9px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: -.02em;
-}
 
-.floating-banner--legacy .floating-banner__tag {
-  background: #f7eadb;
-  color: var(--legacy-tag);
-}
-
-.floating-banner--renewal .floating-banner__tag {
-  background: #e7f2ff;
-  color: var(--renewal-tag);
-}
+/* =========================
+   2-LINE COPY
+========================= */
 
 .floating-banner__copy strong {
   min-width: 0;
-  overflow: hidden;
+
+  display: block;
+
   color: #17283c;
+
   font-size: 14px;
   font-weight: 800;
-  letter-spacing: -.025em;
-  text-overflow: clip;
+
+  line-height: 1.45;
+
+  letter-spacing: -0.025em;
+
+  white-space: normal;
+
+  word-break: keep-all;
 }
 
+
+/* =========================
+   ARROW
+========================= */
+
 .floating-banner__arrow {
+  flex-shrink: 0;
+
   color: var(--brand-blue);
+
   font-size: 20px;
   line-height: 1;
 }
 
+
+/* =========================
+   OPTIONAL:
+   구 / 신 컬러 포인트
+========================= */
+
+.floating-banner--legacy
+.floating-banner__copy strong {
+  color: #40352d;
+}
+
+
+.floating-banner--renewal
+.floating-banner__copy strong {
+  color: #17283c;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 720px) {
+
   :root {
     --banner-size: 62px;
-    --banner-width: min(340px, calc(100vw - 32px));
+
+    --banner-width:
+      min(
+        370px,
+        calc(100vw - 32px)
+      );
   }
+
 
   .content-section {
     grid-template-columns: 1fr;
   }
+
 
   .floating-banner-group {
     right: 16px;
     bottom: 16px;
   }
 
+
   .floating-banner__copy {
-    gap: 8px;
-    padding-right: 14px;
+    gap: 10px;
+
+    padding:
+      0
+      14px
+      0
+      8px;
   }
+
 
   .floating-banner__copy strong {
     font-size: 13px;
+
+    line-height: 1.4;
   }
+
+
+  .floating-banner__arrow {
+    font-size: 18px;
+  }
+
 }
 
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 420px) {
+
+  :root {
+    --banner-width:
+      calc(100vw - 24px);
+  }
+
+
+  .floating-banner-group {
+    right: 12px;
+    bottom: 12px;
+  }
+
+
+  .floating-banner__copy strong {
+    font-size: 12.5px;
+
+    letter-spacing: -0.03em;
+  }
+
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    animation-duration:
+      0.01ms !important;
   }
+
 }
